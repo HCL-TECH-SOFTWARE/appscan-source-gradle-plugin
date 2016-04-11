@@ -4,6 +4,8 @@ The AppScan Source Gradle plugin is used to automate the scanning of Java and Ja
 
 # Prerequisites:
 
+- A local installation of IBM Security AppScan Source.
+
 -  Enable AppScan Source to scan .class files.  To do so, open AppScan Source For Analysis and go to Edit -> Preferences -> Project File Extensions.  On the Java tab, double-click the .class extension and choose "Scan files with this extension".
 
 -  You must compile any Java projects prior to running a scan.  A simple way to do this is to use task dependencies.
