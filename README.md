@@ -8,25 +8,31 @@ The AppScan Source Gradle plugin is used to automate the scanning of Java and Ja
 
 -  Enable AppScan Source to scan .class files.  To do so, open AppScan Source For Analysis and go to Edit -> Preferences -> Project File Extensions.  On the Java tab, double-click the .class extension and choose "Scan files with this extension".
 
--  You must compile any Java projects prior to running a scan.  A simple way to do this is to use task dependencies.
+-  You must compile any Java projects prior to running a scan.
 	
 # Recommendations:
 
 Create a cli.token to persist the user credentials, so they do not need to be included in the generated CLI script.  To generate the .token, execute a "login" command using the interactive AppScan Source CLI.  For example, at a command prompt run:
+
+
 	AppScanSrcCli.exe (Windows)
+
 	appscansrccli (Linux)
+
+
 Then execute a login command using the "-persist" flag.  For example:
+
 	login <server> <username> <password> -persist
 
 # Tasks:
 
-createProject:
+- createProject:
 	Creates an AppScan Source project file (.ppf) for the given project and adds it to an AppScan Source application file (.paf).
 
-createCLIScript:
+- createCLIScript:
 	Generates an AppScan Source project file (.ppf) for each subproject and creates a CLI script that can be run with the "runScan" task.
 
-runScan:
+- runScan:
 	Generates a CLI script using the createCLIScript task and runs a scan using the script $scriptdir/cliscript.txt".
 
 # Configurable Options:
