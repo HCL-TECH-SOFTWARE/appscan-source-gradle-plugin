@@ -1,6 +1,35 @@
+buildscript {
+    repositories {
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
+    }
+    dependencies {
+        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.4'
+    }
+}
+
+apply plugin: 'com.gradle.plugin-publish'
 apply plugin: 'groovy'
+
+group = 'com.ibm.security'
+version = '1.0.1'
 
 dependencies {
     compile gradleApi()
     compile localGroovy()
+}
+
+pluginBundle {
+    website = 'http://www.ibm.com/software/products/en/appscan-source'
+    vcsUrl = 'https://github.com/AppSecDev/appscan-source-gradle-plugin'
+    description = 'IBM Security AppScan Source Gradle Plugin'
+    tags = ['security', 'appscan']
+    
+    plugins {
+        appscanPlugin {
+            id = 'com.ibm.appscan'
+            displayName = 'IBM Security AppScan Source Gradle Plugin'
+        }
+    }
 }
