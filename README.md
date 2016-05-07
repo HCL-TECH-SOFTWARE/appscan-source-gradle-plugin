@@ -2,6 +2,12 @@
 
 The AppScan Source Gradle plugin is used to automate the scanning of Java and Java web projects in Gradle.  It generates AppScan Source project files for Gradle projects that have the "java" plugin and/or "war" plugins applied.  It can also generate and run a CLI script for executing a scan.
 
+# Usage:
+
+To use the AppScan Source plugin, add the following line to build.gradle:
+
+apply plugin: 'com.ibm.appscan'
+
 # Prerequisites:
 
 - A local installation of IBM Security AppScan Source.
