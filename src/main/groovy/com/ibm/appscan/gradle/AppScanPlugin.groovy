@@ -8,11 +8,11 @@ class AppScanPlugin implements Plugin<Project> {
 
     void apply(Project project) {
 		
-		project.subprojects*.apply (plugin: 'com.ibm.appscan.gradle.appscan_plugin')
+		project.subprojects*.apply (plugin: 'com.ibm.appscan')
 		
 		project.extensions.create("appscansettings", AppScanSettingsExtension, project)
 	
-        project.task('createProject') << {
+        	project.task('createProject') << {
 			try {
 				new ProjectCreator(project).run();
 			} catch (AppScanException e) {
