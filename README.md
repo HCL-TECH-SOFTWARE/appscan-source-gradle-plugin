@@ -66,12 +66,10 @@ Below is an example of applying the AppScan plugin to a build.gradle for the roo
 		}
 	}
 
-	allprojects {
-		apply plugin: 'com.ibm.appscan.gradle.appscan_plugin'
+	apply plugin: 'com.ibm.appscan'
 
-		appscansettings {
-			server = "myASEserver.sample.com"
-		}
+	appscansettings {
+		server = "myASEserver.sample.com"
 	}
 	...
 	<other tasks>
