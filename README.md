@@ -60,12 +60,6 @@ appscansettings {
 
 Below is an example of applying the AppScan plugin to a build.gradle for the root project of a multi-project build.  In this example, the "buildApplication" task builds the project.  Executing the "runAppScan" task will build the application and execute a scan.
 
-	buildscript {
-		dependencies {
-			classpath files("C:/gradle/plugins/appscan_gradle_plugin.jar")
-		}
-	}
-
 	apply plugin: 'com.ibm.appscan'
 
 	appscansettings {
