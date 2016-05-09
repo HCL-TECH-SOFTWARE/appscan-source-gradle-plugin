@@ -12,7 +12,9 @@ To use the AppScan Source plugin, add the following lines to build.gradle:
 	  	}
 	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.0.1" }
 	}
-	apply plugin: 'com.ibm.appscan'
+	allprojects {
+		apply plugin: 'com.ibm.appscan'
+	}
 
 # Prerequisites:
 
@@ -72,10 +74,12 @@ appscansettings {
 
 Below is an example of applying the AppScan plugin to a build.gradle for the root project of a multi-project build.  In this example, the "buildApplication" task builds the project.  Executing the "runAppScan" task will build the application and execute a scan.
 
-	apply plugin: 'com.ibm.appscan'
+	allprojects {
+		apply plugin: 'com.ibm.appscan'
 
-	appscansettings {
-		server = "myASEserver.sample.com"
+		appscansettings {
+			server = "myASEserver.sample.com"
+		}
 	}
 	...
 	<other tasks>
