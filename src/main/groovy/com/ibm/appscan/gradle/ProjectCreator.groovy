@@ -39,7 +39,7 @@ public class ProjectCreator extends AppScanTask{
 				appName: m_project.appscansettings.appname,
 				appDir: m_project.appscansettings.appdir) {
 					for(SourceSet sourceSet : m_project.sourceSets) {
-						if(!sourceSet.getName().equalsIgnoreCase("test")) {
+						if(includeSourceSet(sourceSet.getName())) {
 							ounceSourceRoot(
 								dir: sourceSet.output.classesDir)
 						}
@@ -50,5 +50,10 @@ public class ProjectCreator extends AppScanTask{
 					}
 			}
 		}
+	}
+	
+	private boolean includeSourceSet(String name) {
+		List<String> exclusions = Arrays.asList(m_project.appscansettings.sourceexcludes.split(";"))
+		return !exclusions.contains(name)
 	}
 }
