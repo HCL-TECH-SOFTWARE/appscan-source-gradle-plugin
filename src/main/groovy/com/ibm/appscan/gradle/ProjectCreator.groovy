@@ -38,8 +38,9 @@ public class ProjectCreator extends AppScanTask{
 				workingDir: m_project.projectDir,
 				appName: m_project.appscansettings.appname,
 				appDir: m_project.appscansettings.appdir) {
+					List<String> exclusions = Arrays.asList(m_project.appscansettings.sourceexcludes.split(";"))
 					for(SourceSet sourceSet : m_project.sourceSets) {
-						if(!sourceSet.getName().equalsIgnoreCase("test")) {
+						if(!exclusions.contains(sourceSet.getName())) {
 							ounceSourceRoot(
 								dir: sourceSet.output.classesDir)
 						}
