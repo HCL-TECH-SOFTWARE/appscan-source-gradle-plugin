@@ -18,6 +18,7 @@ public class AppScanSettingsExtension {
 	String password = ""
 	String server = "localhost"
 	String scanoptions = ""
+	String sourceexcludes = "test"
 
 	public AppScanSettingsExtension(Project project) {
 		projectname = project.name
