@@ -62,6 +62,7 @@ Then execute a login command using the "-persist" flag.  For example:
 	password					""												The password for authenticating with ASE. Leave blank if using a cli.token (recommended).
 	server						"localhost"										The ASE server to authenticate with.
 	scanoptions					""												Options passed to the CLI "scan" command. See the AppScan Source Utilities Guide for valid options.
+	sourceexcludes				"test"											A ; delimited list of source set names that should be excluded from scanning.
 
 To set options, add an "appscansettings" block to your build script specifying the settings you want to change and the desired value.  For example, to change the directory for the generated CLI script and the generated scan log to "/myApp/temp_files", add the following:
 
