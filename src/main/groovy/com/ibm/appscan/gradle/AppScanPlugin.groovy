@@ -7,9 +7,7 @@ import org.gradle.api.tasks.TaskExecutionException;
 class AppScanPlugin implements Plugin<Project> {
 
     void apply(Project project) {
-		
-		project.subprojects*.apply (plugin: 'com.ibm.appscan')
-		
+			
 		project.extensions.create("appscansettings", AppScanSettingsExtension, project)
 	
         	project.task('createProject') << {
@@ -20,7 +18,7 @@ class AppScanPlugin implements Plugin<Project> {
 			}
 		}
 		
-		project.task('createCLIScript', dependsOn: project.subprojects.createProject) << {
+		project.task('createCLIScript') << {
 			try {
 				new ScriptCreator(project).run();
 			} catch (AppScanException e) {
@@ -28,7 +26,7 @@ class AppScanPlugin implements Plugin<Project> {
 			}
 		}
 		
-		project.task('runScan', dependsOn: project.createCLIScript) << {
+		project.task('runScan') << {
 			try {
 				new ScanRunner(project).run();
 			} catch (AppScanException e) {
