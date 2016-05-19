@@ -21,7 +21,10 @@ public class ScriptCreator extends AppScanTask {
 			cliscript.delete()
 				
 		//Create the new script
-		cliscript << ("login $m_project.appscansettings.server $m_project.appscansettings.username $m_project.appscansettings.password -acceptssl" + newline)
+		if(m_project.appscansettings.username != "" && m_project.appscansettings.password != "")
+			cliscript << ("login $m_project.appscansettings.server $m_project.appscansettings.username $m_project.appscansettings.password -acceptssl" + newline)
+		else
+			cliscript << ("login_file $m_project.appscansettings.server $m_project.appscansettings.tokenfile -acceptssl" + newline)
 		cliscript << ("oa " + applicationfile.getAbsolutePath() + newline)
 		cliscript << ("scan $m_project.appscansettings.scanoptions" + newline)
 		cliscript << ("exit")

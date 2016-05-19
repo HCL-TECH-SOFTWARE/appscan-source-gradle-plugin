@@ -14,6 +14,7 @@ public class AppScanSettingsExtension {
 	String scriptdir
 	String installdir = "C:/Program Files (x86)/IBM/AppScanSource"
 	String logdir
+	String tokenfile
 	String username = ""
 	String password = ""
 	String server = "localhost"
@@ -26,5 +27,7 @@ public class AppScanSettingsExtension {
 		appdir = project.getRootProject().getRootDir().getAbsolutePath()
 		logdir = new File(project.getRootProject().getRootDir(), "appscan").getAbsolutePath()
 		scriptdir = new File(project.getRootProject().getRootDir(), "appscan").getAbsolutePath()
-	}	
+		def usertoken = new File(System.getProperty("user.home"), ".ounce/ouncecli.token")
+		tokenfile = usertoken.exists() ? usertoken.getAbsolutePath() : "C:/ProgramData/IBM/AppScanSource/config/ounceautod.token"
+	}
 }
