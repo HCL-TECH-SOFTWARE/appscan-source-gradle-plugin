@@ -27,6 +27,8 @@ public class ScriptCreator extends AppScanTask {
 			cliscript << ("login_file $m_project.appscansettings.server $m_project.appscansettings.tokenfile -acceptssl" + newline)
 		cliscript << ("oa " + applicationfile.getAbsolutePath() + newline)
 		cliscript << ("scan $m_project.appscansettings.scanoptions" + newline)
+		if(m_project.appscansettings.reportoptions != "")
+			cliscript << ("report $m_project.appscansettings.reportoptions" + newline)
 		cliscript << ("exit")
 	}
 }
