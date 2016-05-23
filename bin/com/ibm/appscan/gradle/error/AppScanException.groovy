@@ -1,4 +1,4 @@
-package com.ibm.appscan.gradle;
+package com.ibm.appscan.gradle.error;
 
 public class AppScanException extends Exception {
 	
