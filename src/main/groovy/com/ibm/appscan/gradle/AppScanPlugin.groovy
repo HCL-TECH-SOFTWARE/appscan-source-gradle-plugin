@@ -1,8 +1,9 @@
 package com.ibm.appscan.gradle;
 
-import org.gradle.api.Project;
-import org.gradle.api.Plugin;
-import org.gradle.api.tasks.TaskExecutionException;
+import org.gradle.api.Plugin
+import org.gradle.api.Project
+
+import com.ibm.appscan.gradle.settings.AppScanSettingsExtension
 
 class AppScanPlugin implements Plugin<Project> {
 
@@ -10,30 +11,25 @@ class AppScanPlugin implements Plugin<Project> {
 		
 		project.subprojects*.apply (plugin: 'com.ibm.appscan')
 		
-		project.extensions.create("appscansettings", AppScanSettingsExtension, project)
-	
-        	project.task('createProject') << {
-			try {
-				new ProjectCreator(project).run();
-			} catch (AppScanException e) {
-				throw new TaskExecutionException(project.createProject, e);
-			}
+		if(project == project.rootProject) 
+			project.extensions.create("appscansettings", AppScanSettingsExtension, project)
+			
+        project.task('createProject',
+				description: "Generates an AppScan Source project for this Gradle project.",
+				type: com.ibm.appscan.gradle.tasks.AppScanCreateProject) {
+				classfiles = {project.plugins.hasPlugin("org.gradle.java") && project.hasProperty("compileJava") ? project.compileJava.outputs.files : project.files(project.projectDir)}
+		}
+
+		project.task('createCLIScript',
+				description: "Generates an AppScan Source CLI script for executing a scan.",
+				type: com.ibm.appscan.gradle.tasks.AppScanCreateScript,
+				dependsOn: project.subprojects.createProject) {
 		}
 		
-		project.task('createCLIScript', dependsOn: project.subprojects.createProject) << {
-			try {
-				new ScriptCreator(project).run();
-			} catch (AppScanException e) {
-				throw new TaskExecutionException(project.createCLIScript, e);
-			}
-		}
-		
-		project.task('runScan', dependsOn: project.createCLIScript) << {
-			try {
-				new ScanRunner(project).run();
-			} catch (AppScanException e) {
-				throw new TaskExecutionException(project.runScan, e);
-			}
+		project.task('runScan',
+				description: "Executes a security scan of this project and all subprojects.",
+				type: com.ibm.appscan.gradle.tasks.AppScanRunScript,
+				dependsOn: ':createCLIScript') << {
 		}
     }
 }

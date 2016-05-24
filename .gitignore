@@ -1,2 +1,5 @@
 .DS_Store
 .gradle/**
+build/**
+bin/**
+.settings/**
