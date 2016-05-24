@@ -12,17 +12,14 @@ To use the AppScan Source plugin, add the following lines to build.gradle:
 	  	}
 	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.0.2" }
 	}
-	allprojects {
-		apply plugin: 'com.ibm.appscan'
-	}
+
+	apply plugin: 'com.ibm.appscan'
 
 # Prerequisites:
 
 - A local installation of IBM Security AppScan Source.
 
 -  Enable AppScan Source to scan .class files.  To do so, open AppScan Source For Analysis and go to Edit -> Preferences -> Project File Extensions.  On the Java tab, double-click the .class extension and choose "Scan files with this extension".
-
--  You must compile any Java projects prior to running a scan.
 	
 # Recommendations:
 
@@ -31,7 +28,7 @@ Create a cli.token to persist the user credentials, so they do not need to be in
 
 	AppScanSrcCli.exe (Windows)
 
-	appscansrccli (Linux)
+	appscansrccli (Linux or Mac)
 
 
 Then execute a login command using the "-persist" flag.  For example:
@@ -68,26 +65,18 @@ To set options, add an "appscansettings" block to your build script specifying t
 
 appscansettings {
 	scriptdir = "/myApp/temp_files"
-	log = "/myApp/temp_files"
+	logdir = "/myApp/temp_files"
 }
 
 # Example Usage:
 
-Below is an example of applying the AppScan plugin to a build.gradle for the root project of a multi-project build.  In this example, the "buildApplication" task builds the project.  Executing the "runAppScan" task will build the application and execute a scan.
+Below is an example of applying the AppScan plugin to a build.gradle for the root project of a multi-project build.  Executing the "runscan" task will compile all java projects and execute a scan.
 
-	allprojects {
-		apply plugin: 'com.ibm.appscan'
+	apply plugin: 'com.ibm.appscan'
 
-		appscansettings {
-			server = "myASEserver.sample.com"
-		}
+	appscansettings {
+		server = "myASEserver.sample.com"
 	}
-	...
-	<other tasks>
-	...
-	task runAppScan(dependsOn : [buildApplication, runScan]) << {
-	}
-	runScan.mustRunAfter buildApplication
 
 # License
 
