@@ -81,7 +81,9 @@ appscansettings {
 
 # Example Usage:
 
-Below is an example of applying the AppScan plugin to a build.gradle for the root project of a multi-project build.  Executing the "runscan" task will compile all java projects and execute a scan.
+Below is an example of applying the AppScan plugin to a build.gradle for the root project of a multi-project build.  Executing the ":runscan" task will compile all java projects and execute a scan.
+
+NOTE: It's recommended to execute the runscan task as ":runscan" so the task will only be executed once for the root project.  Executing "runscan" will result in the runscan task executing for each project in the build, which is generally not the desired behavior.
 
 	apply plugin: 'com.ibm.appscan'
 
