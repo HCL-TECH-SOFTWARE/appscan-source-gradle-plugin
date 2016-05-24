@@ -53,13 +53,24 @@ Then execute a login command using the "-persist" flag.  For example:
 	appname						rootProject.name								The name of the generated .paf file.
 	appdir						rootProject.projectDir							The location of the generated .paf file.
 	scriptdir					"$appdir/appscan"								The location of the generated CLI script.
-	installdir					"C:/Program Files (x86)/IBM/AppScanSource"		The AppScan Source installation directory.
+	installdir					Varies by platform								The AppScan Source installation directory.
+	configdir					Varies by platform								The AppScan Source shared data directory.
 	logdir						"$appdir/appscan/"								The location of the generated scan log.
+	tokenfile					"$user.home/.ounce/ouncecli.token				The token file to use for login.
 	username					""												The username for authenticating with ASE. Leave blank if using a cli.token (recommended).
 	password					""												The password for authenticating with ASE. Leave blank if using a cli.token (recommended).
+	acceptssl					true											Whether or not to accept untrusted certificates.
 	server						"localhost"										The ASE server to authenticate with.
 	scanoptions					""												Options passed to the CLI "scan" command. See the AppScan Source Utilities Guide for valid options.
 	sourceexcludes				"test"											A ; delimited list of source set names that should be excluded from scanning.
+	scanconfig					null											The scan configuration to use for the scan.
+	reporttype					null											The report type to generate.
+	reportformat				null											The format of the generated report.
+	reportlocation				null											The location of the generated report.
+	publishfolder				null											The AppScan Enterprise folder where results will be published.
+	publishapp					null											The AppScan Enterprise application where results will be published.
+	publishname					null											The name of the published assessment in AppScan Enterprise.
+	publishASE					false											Whether or not the results should be published to AppScan Entrerprise (requires additional configruation).
 
 To set options, add an "appscansettings" block to your build script specifying the settings you want to change and the desired value.  For example, to change the directory for the generated CLI script and the generated scan log to "/myApp/temp_files", add the following:
 
