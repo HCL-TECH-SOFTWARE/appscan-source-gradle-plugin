@@ -44,7 +44,7 @@ public class CreateProjectHandler extends AppScanHandler{
 			appName: m_appname,
 			appDir: m_appdir) {
 				for(SourceSet sourceSet : m_project.sourceSets) {
-					if(m_exclusions.contains(sourceSet.getName())) {
+					if(!m_exclusions.contains(sourceSet.getName())) {
 						ounceSourceRoot(dir: sourceSet.output.classesDir)
 					}
 				}
