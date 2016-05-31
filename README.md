@@ -10,7 +10,7 @@ To use the AppScan Source plugin, add the following lines to build.gradle:
 		repositories {
 	    		maven { url "https://plugins.gradle.org/m2/" }
 	  	}
-	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.1.0" }
+	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.1.1" }
 	}
 
 	apply plugin: 'com.ibm.appscan'
