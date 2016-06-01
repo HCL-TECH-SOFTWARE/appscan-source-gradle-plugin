@@ -10,7 +10,7 @@ To use the AppScan Source plugin, add the following lines to build.gradle:
 		repositories {
 	    		maven { url "https://plugins.gradle.org/m2/" }
 	  	}
-	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.1.1" }
+	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.1.2" }
 	}
 
 	apply plugin: 'com.ibm.appscan'
@@ -49,7 +49,6 @@ Then execute a login command using the "-persist" flag.  For example:
 # Configurable Options:
 
 	OPTION:						DEFAULT VALUE									DESCRIPTION
-	projectname					project.name									The name of the generated .ppf file.
 	appname						rootProject.name								The name of the generated .paf file.
 	appdir						rootProject.projectDir							The location of the generated .paf file.
 	scriptdir					"$appdir/appscan"								The location of the generated CLI script.
