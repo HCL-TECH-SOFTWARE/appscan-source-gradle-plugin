@@ -35,9 +35,9 @@ class AppScanCreateProject extends DefaultTask {
 	}
 	
 	void configureSettings() {
+		project.appscansettings.projectname = projectName ?: project.name
 		project.appscansettings.appdir = applicationDir ?: project.appscansettings.appdir
 		project.appscansettings.appname = applicationName ?: project.appscansettings.appname
-		project.appscansettings.projectname = projectName ?: project.name
 		project.appscansettings.sourceexcludes = exclusions ?: project.appscansettings.sourceexcludes
 	}
 }
