@@ -72,7 +72,7 @@ public class CreateScriptHandler extends AppScanHandler {
 	private String createScanCommand() {
 		StringBuilder command = new StringBuilder("scan")
 		if(m_project.appscansettings.scanconfig != null)
-			command.append("-scanconfig ${m_project.appscansettings.scanconfig}")
+			command.append(" -scanconfig ${m_project.appscansettings.scanconfig}")
 		return command.toString()
 	}
 
