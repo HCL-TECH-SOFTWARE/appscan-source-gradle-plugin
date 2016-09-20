@@ -39,7 +39,7 @@ public class CreateProjectHandler extends AppScanHandler{
 		}
 		ant.ounceCreateProject(
 			name: m_projectname,
-			classpath: m_project.sourceSets.main.compileClasspath.asPath,
+			classpath: m_project.sourceSets.main.compileClasspath.asPath + File.pathSeparator + m_project.sourceSets.main.output.classesDir,
 			workingDir: m_project.projectDir,
 			appName: m_appname,
 			appDir: m_appdir) {
