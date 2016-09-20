@@ -59,20 +59,18 @@ public class CreateScriptHandler extends AppScanHandler {
 	}
 
 	private String createOpenAppCommand() {
-    	StringBuilder command = new StringBuilder("")
-    	File appFile = new File(m_application)
+    		StringBuilder command = new StringBuilder("")
+    		File appFile = new File(m_application)
 
-    	if(appFile.isFile()) {
-    		command.append("oa ")
-    		command.append(appFile.getAbsolutePath())
-    	}
-    	return command.toString()
+	    	if(appFile.isFile())
+    			command.append("oa \"${appFile.getAbsolutePath()}\"")
+    		return command.toString()
 	}
 
 	private String createScanCommand() {
 		StringBuilder command = new StringBuilder("scan")
 		if(m_project.appscansettings.scanconfig != null)
-			command.append(" -scanconfig ${m_project.appscansettings.scanconfig}")
+			command.append(" -scanconfig \"${m_project.appscansettings.scanconfig}\"")
 		return command.toString()
 	}
 
@@ -82,7 +80,7 @@ public class CreateScriptHandler extends AppScanHandler {
 			command.append("report")
 			command.append(" \"${m_project.appscansettings.reporttype}\"")
 			command.append(" ${m_project.appscansettings.reportformat}")
-			command.append(" ${m_project.appscansettings.reportlocation}")
+			command.append(" \"${m_project.appscansettings.reportlocation}\"")
 			return command.toString()
 		}
 		return ""
