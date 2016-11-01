@@ -15,7 +15,7 @@ public class CreateScriptHandler extends AppScanHandler {
 		super(project)
 		m_script = "${project.appscansettings.scriptdir}/${project.appscansettings.scriptname}"
 		m_application = "${project.appscansettings.appdir}/${project.appscansettings.appname}.paf"
-		m_publishASE = project.appscansettings.publishase
+		m_publishASE = project.appscansettings.publishASE
 		if(project.appscansettings.acceptssl)
 			m_acceptssl = "-acceptssl"
 		else
