@@ -15,6 +15,7 @@ public class CreateScriptHandler extends AppScanHandler {
 		super(project)
 		m_script = "${project.appscansettings.scriptdir}/${project.appscansettings.scriptname}"
 		m_application = "${project.appscansettings.appdir}/${project.appscansettings.appname}.paf"
+		m_publishASE = project.appscansettings.publishase
 		if(project.appscansettings.acceptssl)
 			m_acceptssl = "-acceptssl"
 		else
@@ -87,17 +88,21 @@ public class CreateScriptHandler extends AppScanHandler {
 	}	
 
 	private String createPublishCommand() {
-		StringBuilder command = new StringBuilder("")
-		if(m_publishASE) {
-			command.append("pase")
-			if(m_publishFolder != null)
-	            command.append(" -folder ${m_project.appscansettings.publishfolder}")
-			if(m_publishApp != null)
-				command.append(" -application ${m_project.appscansettings.publishapp}")
-			if(m_publishName != null)
-				command.append(" -name ${m_project.appscansettings.publishname}")
-		}
-		return command.toString()
+                StringBuilder command = new StringBuilder("")
+                if(m_publishASE) {
+                        String folder = m_project.appscansettings.publishfolder
+                        String app = m_project.appscansettings.publishapp
+                        String name = m_project.appscansettings.publishname
+
+                        command.append("pase")
+                        if(folder != null)
+                                command.append(" -folder ${folder}")
+                        if(app != null)
+                                command.append(" -application ${app}")
+                        if(name != null)
+                                command.append(" -name ${name}")
+                }
+                return command.toString()
 	}
 }
 
