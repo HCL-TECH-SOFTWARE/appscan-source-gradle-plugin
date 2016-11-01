@@ -96,11 +96,11 @@ public class CreateScriptHandler extends AppScanHandler {
 
                         command.append("pase")
                         if(folder != null)
-                                command.append(" -folder ${folder}")
+                                command.append(" -folder \"${folder}\"")
                         if(app != null)
-                                command.append(" -application ${app}")
+                                command.append(" -aseapplication \"${app}\"")
                         if(name != null)
-                                command.append(" -name ${name}")
+                                command.append(" -name \"${name}\"")
                 }
                 return command.toString()
 	}
