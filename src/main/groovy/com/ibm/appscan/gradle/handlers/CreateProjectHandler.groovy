@@ -45,7 +45,9 @@ public class CreateProjectHandler extends AppScanHandler{
 			appDir: m_appdir) {
 				for(SourceSet sourceSet : m_project.sourceSets) {
 					if(!m_exclusions.contains(sourceSet.getName())) {
-						ounceSourceRoot(dir: sourceSet.output.classesDir)
+						for(File file : sourceSet.java.getSrcDirs()) {
+							ounceSourceRoot(dir: m_project.relativePath(file))
+						}
 					}
 				}
 				if(m_project.plugins.hasPlugin("org.gradle.war")) {
