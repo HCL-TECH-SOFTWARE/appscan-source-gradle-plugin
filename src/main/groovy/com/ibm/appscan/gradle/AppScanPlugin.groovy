@@ -17,7 +17,7 @@ class AppScanPlugin implements Plugin<Project> {
         	project.task('createProject',
 				description: "Generates an AppScan Source project for this Gradle project.",
 				type: com.ibm.appscan.gradle.tasks.AppScanCreateProject) {
-				classfiles = {project.plugins.hasPlugin("org.gradle.java") && project.hasProperty("compileJava") ? project.compileJava.outputs.files : project.files(project.projectDir)}
+				classfiles = {(project.plugins.hasPlugin("org.gradle.java") || project.plugins.hasPlugin("java")) && project.hasProperty("compileJava") ? project.compileJava.outputs.files : project.files(project.projectDir)}
 		}
 
 		project.task('createCLIScript',
