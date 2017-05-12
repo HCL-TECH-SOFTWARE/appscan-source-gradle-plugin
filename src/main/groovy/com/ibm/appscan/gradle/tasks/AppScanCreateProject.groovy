@@ -24,7 +24,7 @@ class AppScanCreateProject extends DefaultTask {
 	
 	@TaskAction
 	def createAppScanProject() {
-		if(project.plugins.hasPlugin("org.gradle.java")) {
+		if(project.plugins.hasPlugin("java") || project.plugins.hasPlugin("org.gradle.java")) {
 			configureSettings()
 			try {
 				new CreateProjectHandler(project).run()

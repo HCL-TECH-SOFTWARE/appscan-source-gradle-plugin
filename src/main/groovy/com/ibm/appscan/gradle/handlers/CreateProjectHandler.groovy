@@ -50,7 +50,7 @@ public class CreateProjectHandler extends AppScanHandler{
 						}
 					}
 				}
-				if(m_project.plugins.hasPlugin("org.gradle.war")) {
+				if(m_project.plugins.hasPlugin("org.gradle.war")|| m_project.plugins.hasPlugin("war")) {
 					ounceWeb (webContextRoot: m_project.webAppDir.getAbsolutePath())
 				}
 			}
