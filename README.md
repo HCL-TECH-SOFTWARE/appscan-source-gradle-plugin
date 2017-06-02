@@ -70,6 +70,7 @@ Then execute a login command using the "-persist" flag.  For example:
 	publishapp					null											The AppScan Enterprise application where results will be published.
 	publishname					null											The name of the published assessment in AppScan Enterprise.
 	publishASE					false											Whether or not the results should be published to AppScan Entrerprise (requires additional configruation).
+    compilecode          false                               If true it will compile code prior to scan. If false it will use the bytecodes already generate.
 
 To set options, add an "appscansettings" block to your build script specifying the settings you want to change and the desired value.  For example, to change the directory for the generated CLI script and the generated scan log to "/myApp/temp_files", add the following:
 
