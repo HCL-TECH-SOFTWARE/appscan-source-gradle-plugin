@@ -16,6 +16,7 @@ class AppScanCreateProject extends DefaultTask {
 	
 	String applicationDir
 	String applicationName
+	String projectDir
 	String projectName
 	String exclusions
 
@@ -35,6 +36,7 @@ class AppScanCreateProject extends DefaultTask {
 	}
 	
 	void configureSettings() {
+		project.appscansettings.projectdir = projectDir ?: project.appscansettings.projectdir		
 		project.appscansettings.projectname = projectName ?: project.name
 		project.appscansettings.appdir = applicationDir ?: project.appscansettings.appdir
 		project.appscansettings.appname = applicationName ?: project.appscansettings.appname
