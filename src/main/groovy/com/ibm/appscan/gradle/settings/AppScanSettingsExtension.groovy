@@ -2,7 +2,9 @@ package com.ibm.appscan.gradle.settings;
 
 import org.gradle.api.Project
 
-public class AppScanSettingsExtension {
+import com.ibm.appscan.gradle.AppScanConstants
+
+public class AppScanSettingsExtension implements AppScanConstants {
 
 	//Don't allow changing the script name since we need to delete the file for each run.
 	final String scriptname = "cliscript.txt"
@@ -11,6 +13,7 @@ public class AppScanSettingsExtension {
 	String projectname
 	String appname
 	String appdir
+	String projectdir
 	String scriptdir
 	String installdir
 	String configdir
@@ -33,7 +36,8 @@ public class AppScanSettingsExtension {
 	public AppScanSettingsExtension(Project project) {
 		projectname = project.name
 		appname = project.rootProject.name
-		appdir = project.rootDir.getAbsolutePath()
+		appdir = System.getProperty(APP_DIR) == null ? project.rootDir.getAbsolutePath() : System.getProperty(APP_DIR)
+		projectdir = System.getProperty(PROJECT_DIR)
 		logdir = new File(project.rootDir, "appscan").getAbsolutePath()
 		scriptdir = new File(project.rootDir, "appscan").getAbsolutePath()
 		setAppScanDirs()
@@ -44,15 +48,15 @@ public class AppScanSettingsExtension {
 	private void setAppScanDirs() {
 		String osName = System.getProperty("os.name").toLowerCase()
 		if(osName.contains("windows")) {
-			installdir = "C:/Program Files (x86)/IBM/AppScanSource"
+			installdir = System.getProperty(INSTALL) ?: "C:/Program Files (x86)/IBM/AppScanSource"
 			configdir = "C:/ProgramData/IBM/AppScanSource"	
 		}
 		else if(osName.contains("mac")) {
-			installdir = "/Applications/AppScanSource.app"
+			installdir = System.getProperty(INSTALL) ?: "/Applications/AppScanSource.app"
 			configdir = "/Users/Shared/AppScanSource"	
 		}
 		else {
-			installdir = "/opt/ibm/appscansource"
+			installdir = System.getProperty(INSTALL) ?: "/opt/ibm/appscansource"
 			configdir = "/var/opt/ibm/appscansource"	
 		}
 	}

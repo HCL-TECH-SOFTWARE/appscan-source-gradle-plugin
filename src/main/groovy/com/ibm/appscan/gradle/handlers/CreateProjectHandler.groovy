@@ -9,6 +9,7 @@ import com.ibm.appscan.gradle.error.AppScanException
 public class CreateProjectHandler extends AppScanHandler{
 
 	private String m_appdir;
+	private String m_projectdir;
 	private String m_appname;
 	private String m_projectname;
 	private List<String> m_exclusions;
@@ -16,6 +17,7 @@ public class CreateProjectHandler extends AppScanHandler{
 	public CreateProjectHandler(Project project) {
 		super(project)
 		m_appdir = project.appscansettings.appdir
+		m_projectdir = project.appscansettings.projectdir ?: project.projectDir
 		m_appname = project.appscansettings.appname
 		m_projectname = project.appscansettings.projectname
 		m_exclusions = Arrays.asList(project.appscansettings.sourceexcludes)
@@ -24,9 +26,12 @@ public class CreateProjectHandler extends AppScanHandler{
 	@Override
 	protected void runTask() throws AppScanException{
 		//Work around a problem updating existing .ppf files
-		File projectfile = new File(m_project.projectDir, "${m_projectname}.ppf")
+		File projectfile = new File(m_projectdir, "${m_projectname}.ppf")
 		if(projectfile.isFile())
 			projectfile.delete()
+		
+		//Set the ounce.application_dir property, so ant uses the same value
+		System.setProperty("ounce.application_dir", m_appdir)
 		
 		def ant = new AntBuilder()
 
@@ -40,7 +45,7 @@ public class CreateProjectHandler extends AppScanHandler{
 		ant.ounceCreateProject(
 			name: m_projectname,
 			classpath: m_project.sourceSets.main.compileClasspath.asPath + File.pathSeparator + m_project.sourceSets.main.output.classesDir,
-			workingDir: m_project.projectDir,
+			workingDir: m_projectdir,
 			appName: m_appname,
 			appDir: m_appdir) {
 				for(SourceSet sourceSet : m_project.sourceSets) {
@@ -57,8 +62,14 @@ public class CreateProjectHandler extends AppScanHandler{
 	
 	@Override
 	protected void verifySettings() throws AppScanException {
+		//Ensure the app and project dirs exist
+		new File(m_appdir).mkdirs()
+		new File(m_projectdir).mkdirs()
+	
 		if(!new File(m_appdir).isDirectory())
 			throw new AppScanException("The application directory ${m_appdir} does not exist!")
+		if(!new File(m_projectdir).isDirectory())
+			throw new AppScanException("The project directory ${m_projectdir} does not exist!")
 	}
 }
 

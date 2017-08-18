@@ -29,7 +29,7 @@ class AppScanPlugin implements Plugin<Project> {
 		project.task('runScan',
 				description: "Executes a security scan of this project and all subprojects.",
 				type: com.ibm.appscan.gradle.tasks.AppScanRunScript,
-				dependsOn: ':createCLIScript') << {
+				dependsOn: ':createCLIScript') {
 		}
     }
 }
