@@ -22,8 +22,7 @@ class AppScanCreateScript extends DefaultTask {
 	String appDir
 	String appName
 	String scanConfig
-	boolean compileCode
-	
+
 	//report properties
 	String reportType
 	String reportFormat
@@ -61,6 +60,5 @@ class AppScanCreateScript extends DefaultTask {
 		project.appscansettings.publishapp = publishApp ?: project.appscansettings.publishapp
 		project.appscansettings.publishname = publishName ?: project.appscansettings.publishname
 		project.appscansettings.publishASE = publishASE ?: project.appscansettings.publishASE
-		project.appscansettings.compilecode = compileCode ?: project.appscansettings.compilecode
 	}
 }
