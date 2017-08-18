@@ -10,7 +10,7 @@ To use the AppScan Source plugin, add the following lines to build.gradle:
 		repositories {
 	    		maven { url "https://plugins.gradle.org/m2/" }
 	  	}
-	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.1.6" }
+	  	dependencies { classpath "gradle.plugin.com.ibm.security:appscan-source-gradle-plugin:1.1.8" }
 	}
 
 	apply plugin: 'com.ibm.appscan'
@@ -51,6 +51,7 @@ Then execute a login command using the "-persist" flag.  For example:
 	OPTION:						DEFAULT VALUE									DESCRIPTION
 	appname						rootProject.name								The name of the generated .paf file.
 	appdir						rootProject.projectDir							The location of the generated .paf file.
+	projectdir					project.projectDir							The location of the generated .ppf file.
 	scriptdir					"$appdir/appscan"								The location of the generated CLI script.
 	installdir					Varies by platform								The AppScan Source installation directory.
 	configdir					Varies by platform								The AppScan Source shared data directory.
@@ -61,12 +62,12 @@ Then execute a login command using the "-persist" flag.  For example:
 	acceptssl					true											Whether or not to accept untrusted certificates.
 	server						"localhost"										The ASE server to authenticate with.
 	scanoptions					""												Options passed to the CLI "scan" command. See the AppScan Source Utilities Guide for valid options.
-	sourceexcludes				"test"											A ; delimited list of source set names that should be excluded from scanning.
+	sourceexcludes					"test"											A ; delimited list of source set names that should be excluded from scanning.
 	scanconfig					null											The scan configuration to use for the scan.
 	reporttype					null											The report type to generate.
-	reportformat				null											The format of the generated report.
-	reportlocation				null											The location of the generated report.
-	publishfolder				null											The AppScan Enterprise folder where results will be published.
+	reportformat					null											The format of the generated report.
+	reportlocation					null											The location of the generated report.
+	publishfolder					null											The AppScan Enterprise folder where results will be published.
 	publishapp					null											The AppScan Enterprise application where results will be published.
 	publishname					null											The name of the published assessment in AppScan Enterprise.
 	publishASE					false											Whether or not the results should be published to AppScan Entrerprise (requires additional configruation).
@@ -77,6 +78,11 @@ appscansettings {
 	scriptdir = "/myApp/temp_files"
 	logdir = "/myApp/temp_files"
 }
+
+<b>NOTE:</b> The installdir, appdir, and projectdir options can now be specified using Java properties on the command line using the following syntax:
+	-Dappscan.installdir=<install directory>
+	-Dappscan.appdir=<directory to store .paf>
+	-Dappscan.projectdir=<directory to store .ppf>
 
 # Example Usage:
 
