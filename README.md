@@ -19,7 +19,21 @@ To use the AppScan Source plugin, add the following lines to build.gradle:
 
 - A local installation of IBM Security AppScan Source.
 
--  Enable AppScan Source to scan .class files.  To do so, open AppScan Source For Analysis and go to Edit -> Preferences -> Project File Extensions.  On the Java tab, double-click the .class extension and choose "Scan files with this extension".
+-  Enable AppScan Source to scan .class files.  To do so:
+
+	- In AppScan Source For Analysis go to Edit -> Preferences -> Project File Extensions.  On the Java tab, double-click the .class extension and choose "Scan files with this extension".
+	
+	Or:
+
+	- Open <data_dir>/file_extensions.xml in a text editor and locate the FileExtensionSet named "java".  Edit the "class" extension and set the "assess" attribute to a value of "true".
+	<data_dir> maps to the following directories, by default:
+	
+		Windows - C:\ProgramData\IBM\AppScanSource\ltd
+	
+		Linux - /var/opt/ibm/appscansource/ltd
+	
+		Mac - /Users/Shared/AppScanSource/ltd
+
 	
 # Recommendations:
 
