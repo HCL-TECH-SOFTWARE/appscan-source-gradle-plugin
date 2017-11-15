@@ -32,6 +32,7 @@ public class AppScanSettingsExtension implements AppScanConstants {
 	String publishname
 	boolean publishASE = false
 	boolean acceptssl = true
+	boolean compilecode = false
 	
 	public AppScanSettingsExtension(Project project) {
 		projectname = project.name

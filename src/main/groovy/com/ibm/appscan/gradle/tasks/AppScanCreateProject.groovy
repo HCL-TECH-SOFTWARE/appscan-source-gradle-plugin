@@ -19,6 +19,7 @@ class AppScanCreateProject extends DefaultTask {
 	String projectDir
 	String projectName
 	String exclusions
+	boolean compileCode
 
 	@InputFiles
 	def classfiles
@@ -41,5 +42,6 @@ class AppScanCreateProject extends DefaultTask {
 		project.appscansettings.appdir = applicationDir ?: project.appscansettings.appdir
 		project.appscansettings.appname = applicationName ?: project.appscansettings.appname
 		project.appscansettings.sourceexcludes = exclusions ?: project.appscansettings.sourceexcludes
+		project.appscansettings.compilecode = compileCode ?: project.appscansettings.compilecode
 	}
 }

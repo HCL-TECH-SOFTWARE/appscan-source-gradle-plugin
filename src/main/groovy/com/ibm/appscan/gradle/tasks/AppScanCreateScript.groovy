@@ -22,7 +22,7 @@ class AppScanCreateScript extends DefaultTask {
 	String appDir
 	String appName
 	String scanConfig
-	
+
 	//report properties
 	String reportType
 	String reportFormat
