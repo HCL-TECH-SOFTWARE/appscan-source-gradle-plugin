@@ -6,6 +6,14 @@ The AppScan Source Gradle plugin is used to automate the scanning of Java and Ja
 
 To use the AppScan Source plugin, add the following lines to build.gradle:
 
+	plugins {
+		id "com.ibm.appscan" version "1.1.8"
+	}
+	
+	apply plugin: 'com.ibm.appscan'
+
+Or use the following:
+
 	buildscript {
 		repositories {
 	    		maven { url "https://plugins.gradle.org/m2/" }
