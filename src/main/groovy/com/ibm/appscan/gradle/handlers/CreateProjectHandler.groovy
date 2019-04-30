@@ -44,14 +44,14 @@ public class CreateProjectHandler extends AppScanHandler{
 		}
 		ant.ounceCreateProject(
 			name: m_projectname,
-			classpath: m_project.sourceSets.main.compileClasspath.asPath + File.pathSeparator + m_project.sourceSets.main.output.classesDir,
+			classpath: m_project.sourceSets.main.compileClasspath.asPath + File.pathSeparator + m_project.sourceSets.main.output.classesDirs,
 			workingDir: m_projectdir,
 			appName: m_appname,
 			appDir: m_appdir) {
 				for(SourceSet sourceSet : m_project.sourceSets) {
 					if(!m_exclusions.contains(sourceSet.getName())) {
 						if(!m_project.appscansettings.compilecode)
-						ounceSourceRoot(dir: sourceSet.output.classesDir)
+						ounceSourceRoot(dir: sourceSet.output.classesDirs)
 						else
 						    for(File file : sourceSet.java.getSrcDirs()) {
 							    ounceSourceRoot(dir: m_project.relativePath(file))
