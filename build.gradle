@@ -13,7 +13,7 @@ apply plugin: 'com.gradle.plugin-publish'
 apply plugin: 'groovy'
 
 group = 'com.ibm.security'
-version = '1.1.8'
+version = '1.1.9'
 
 dependencies {
     compile gradleApi()
