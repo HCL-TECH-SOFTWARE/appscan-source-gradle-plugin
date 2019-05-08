@@ -52,7 +52,7 @@ public class CreateProjectHandler extends AppScanHandler{
 					if(!m_exclusions.contains(sourceSet.getName())) {
 						if(!m_project.appscansettings.compilecode) {
 							for (File file : sourceSet.output.classesDirs) {
-								ounceSourceRoot(dir: m_project.relativePath(file))
+								ounceSourceRoot(dir: file.getAbsolutePath())
 							}
 						}
 						else {
