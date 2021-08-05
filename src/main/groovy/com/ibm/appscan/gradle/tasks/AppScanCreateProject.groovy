@@ -1,29 +1,32 @@
-package com.ibm.appscan.gradle.tasks;
+package com.ibm.appscan.gradle.tasks
 
 import org.gradle.api.DefaultTask
-import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.InputFiles
-import org.gradle.api.tasks.OutputFile
+import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.TaskExecutionException
 
 import com.ibm.appscan.gradle.error.AppScanException
 import com.ibm.appscan.gradle.handlers.CreateProjectHandler
 
-
-
 class AppScanCreateProject extends DefaultTask {
-	
+
+	@Internal
 	String applicationDir
+	@Internal
 	String applicationName
+	@Internal
 	String projectDir
+	@Internal
 	String projectName
+	@Internal
 	String exclusions
+	@Internal
 	boolean compileCode
 
 	@InputFiles
 	def classfiles
-	
+
 	@TaskAction
 	def createAppScanProject() {
 		if(project.plugins.hasPlugin("java") || project.plugins.hasPlugin("org.gradle.java")) {
@@ -35,9 +38,9 @@ class AppScanCreateProject extends DefaultTask {
 			}
 		}
 	}
-	
+
 	void configureSettings() {
-		project.appscansettings.projectdir = projectDir ?: project.appscansettings.projectdir		
+		project.appscansettings.projectdir = projectDir ?: project.appscansettings.projectdir
 		project.appscansettings.projectname = projectName ?: project.name
 		project.appscansettings.appdir = applicationDir ?: project.appscansettings.appdir
 		project.appscansettings.appname = applicationName ?: project.appscansettings.appname
