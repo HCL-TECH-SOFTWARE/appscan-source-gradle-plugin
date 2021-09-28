@@ -21,8 +21,12 @@ class AppScanCreateProject extends DefaultTask {
 	String projectName
 	@Internal
 	String exclusions
-	@Internal
+
 	boolean compileCode
+	@Internal
+	boolean getCompileCode() {
+		return compileCode
+	}
 
 	@InputFiles
 	def classfiles
