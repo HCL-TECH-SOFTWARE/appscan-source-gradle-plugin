@@ -1,6 +1,7 @@
 package com.ibm.appscan.gradle.tasks;
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.TaskExecutionException
 
@@ -10,7 +11,9 @@ import com.ibm.appscan.gradle.handlers.RunScriptHandler
 
 class AppScanRunScript extends DefaultTask {
 
+	@Internal
 	String scriptDir
+	@Internal
 	String logDir
 
 	@TaskAction
