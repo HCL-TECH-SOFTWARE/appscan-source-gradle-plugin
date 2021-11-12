@@ -1,6 +1,7 @@
 package com.ibm.appscan.gradle.tasks;
 
 import org.gradle.api.DefaultTask
+import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.TaskExecutionException
 
@@ -10,29 +11,50 @@ import com.ibm.appscan.gradle.handlers.CreateScriptHandler
 
 class AppScanCreateScript extends DefaultTask {
 
+	@Internal
 	String scriptDir
 
 	//login properties
+	@Internal
 	String server
+	@Internal
 	String user
+	@Internal
 	String password
 	boolean acceptssl
+	@Internal
+	boolean getAcceptssl() {
+		return acceptssl
+	}
 
 	//scan properties
+	@Internal
 	String appDir
+	@Internal
 	String appName
+	@Internal
 	String scanConfig
 
 	//report properties
+	@Internal
 	String reportType
+	@Internal
 	String reportFormat
+	@Internal
 	String reportLocation
 	
 	//publish properties
+	@Internal
 	String publishFolder
+	@Internal
 	String publishApp
+	@Internal
 	String publishName
 	boolean publishASE
+	@Internal
+	boolean getPublishASE() {
+		return publishASE
+	}
 	
 	@TaskAction
 	def createScript() {
