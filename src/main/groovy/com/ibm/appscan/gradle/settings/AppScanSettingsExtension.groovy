@@ -49,16 +49,16 @@ public class AppScanSettingsExtension implements AppScanConstants {
 	private void setAppScanDirs() {
 		String osName = System.getProperty("os.name").toLowerCase()
 		if(osName.contains("windows")) {
-			installdir = System.getProperty(INSTALL) ?: "C:/Program Files (x86)/IBM/AppScanSource"
-			configdir = "C:/ProgramData/IBM/AppScanSource"	
+			installdir = System.getProperty(INSTALL) ?: new File("C:/Program Files (x86)/IBM/AppScanSource/bin/AppScanSrcCli.exe").exists() ? "C:/Program Files (x86)/IBM/AppScanSource" : "C:/Program Files/HCL/AppScanSource"
+			configdir = new File("C:/ProgramData/IBM/AppScanSource/config").exists() ? "C:/ProgramData/IBM/AppScanSource" : "C:/ProgramData/HCL/AppScanSource"
 		}
 		else if(osName.contains("mac")) {
 			installdir = System.getProperty(INSTALL) ?: "/Applications/AppScanSource.app"
 			configdir = "/Users/Shared/AppScanSource"	
 		}
 		else {
-			installdir = System.getProperty(INSTALL) ?: "/opt/ibm/appscansource"
-			configdir = "/var/opt/ibm/appscansource"	
+			installdir = System.getProperty(INSTALL) ?: new File("/opt/ibm/appscansource/bin/appscansrccli").exists() ? "/opt/ibm/appscansource" : "/opt/hcl/appscansource"
+			configdir = new File("/var/opt/ibm/appscansource/config").exists() ? "/var/opt/ibm/appscansource" : "/var/opt/hcl/appscansource"
 		}
 	}
 }
