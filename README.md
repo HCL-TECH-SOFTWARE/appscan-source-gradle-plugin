@@ -27,7 +27,7 @@ Or use the following:
 
 - A local installation of IBM Security AppScan Source.
 
-- From AppScan Source 10.0.7 release default product installa path has been changed from IBM to HCL hense the data directory mapping also updated in 1.1.13 version accordingly, first it looks for the install path which contains HCL if the path doesn't exists then it maps to old path which is IBM.
+- As of version 10.0.7, AppScan Source has an updated installation path, replacing IBM with HCL. To accommodate this change, data directory has been updated accordingly in 1.1.13 version of the AppScan Source Gradle plugin. It first looks for the install path with HCL in it, if the path does not exist it maps to the old path which is IBM.
 
 -  Enable AppScan Source to scan .class files.  To do so:
 
