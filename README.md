@@ -1,4 +1,4 @@
-# IBM Security AppScan Source Gradle Plugin
+# HCL Security AppScan Source Gradle Plugin
 
 The AppScan Source Gradle plugin is used to automate the scanning of Java and Java web projects in Gradle.  It generates AppScan Source project files for Gradle projects that have the "java" plugin and/or "war" plugins applied.  It can also generate and run a CLI script for executing a scan.
 
@@ -25,9 +25,9 @@ Or use the following:
 
 # Prerequisites:
 
-- A local installation of IBM Security AppScan Source.
+- A local installation of HCL Security AppScan Source.
 
-- As of version 10.0.7, AppScan Source has an updated installation path, replacing IBM with HCL. To accommodate this change, data directory has been updated accordingly in 1.1.13 version of the AppScan Source Gradle plugin. It first looks for the install path with HCL in it, if the path does not exist it maps to the old path which is IBM.
+	NOTE: As of version 10.0.7, AppScan Source has an updated installation path. Version 1.1.13 of the AppScan Source Gradle plugin has been updated to handle both the old and new installation paths by default.
 
 -  Enable AppScan Source to scan .class files.  To do so:
 
