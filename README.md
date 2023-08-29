@@ -77,7 +77,7 @@ Then execute a login command using the "-persist" flag.  For example:
 	appdir						rootProject.projectDir							The location of the generated .paf file.
 	projectdir					project.projectDir							The location of the generated .ppf file.
 	scriptdir					"$appdir/appscan"								The location of the generated CLI script.
-	installdir					Varies by platform								The AppScan Source installation directory.
+	install						Varies by platform								The AppScan Source installation directory.
 	configdir					Varies by platform								The AppScan Source shared data directory.
 	logdir						"$appdir/appscan/"								The location of the generated scan log.
 	tokenfile					"$user.home/.ounce/ouncecli.token				The token file to use for login.
@@ -104,8 +104,8 @@ appscansettings {
 	logdir = "/myApp/temp_files"
 }
 
-<b>NOTE:</b> The installdir, appdir, and projectdir options can now be specified using Java properties on the command line using the following syntax:
-	-Dappscan.installdir=<install directory>
+<b>NOTE:</b> The install, appdir, and projectdir options can now be specified using Java properties on the command line using the following syntax:
+	-Dappscan.install=<install directory>
 	-Dappscan.appdir=<directory to store .paf>
 	-Dappscan.projectdir=<directory to store .ppf>
 
